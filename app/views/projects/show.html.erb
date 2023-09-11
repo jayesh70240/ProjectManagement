@@ -1,0 +1,12 @@
+<h1>
+<%= @project.projectname %> 
+</h1>
+
+<p> <%= link_to "Add task to project", new_project_task_url(@project) %></p>
+
+<% if @tasks.present? && current_user.id == @tasks[0].user_id %>
+    <%= link_to "Edit Project", edit_project_path(@project) %>
+    <%=   link_to 'Delete Project', @project, method: :delete, data: { confirm: 'Are you sure?' } %> 
+<% end %>
+<% tasks = @project.tasks %>
+<%= render partial: 'tasks/tasklist', :locals => {:@tasks => tasks}%>

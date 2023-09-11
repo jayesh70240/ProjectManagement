@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assignedto: MyString
+  submittedto: MyString
+  status: false
+  submittedon: 2023-09-10 21:40:00
+  user_id: 1
+  project_id_integer: MyString
+
+two:
+  assignedto: MyString
+  submittedto: MyString
+  status: false
+  submittedon: 2023-09-10 21:40:00
+  user_id: 1
+  project_id_integer: MyString

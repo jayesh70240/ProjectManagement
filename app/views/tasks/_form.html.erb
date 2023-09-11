@@ -1,0 +1,67 @@
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@task.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+
+    <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<br>
+
+<div class="container">
+
+<%= form_for(@task) do |f| %>
+
+  <div class="center-block" >
+    <%= f.label :submittedto, "Submitted To" %>
+    <%= f.text_field :submittedto, class: "form-control" %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :submittedon, "Submitted On" %>
+    <%= f.date_select :submittedon, class: "form-control" %>
+  </div>
+  <br>
+
+  <% if @project %>
+    <%= f.hidden_field :project_id %>
+
+  <% else  %>
+  <div>
+    <%= f.label :project_id, "Select the Project for this task:" %><br>
+    <%= f.collection_select :project_id, Project.all, :id, :projectname %>
+  </div>
+
+  <% end %>
+  <div>
+    <p></p>
+    <div></div>
+    <div>
+      <div>
+      </div>
+      <p>
+      </p>
+    </div>
+  </div>
+
+  <br>
+
+    <% if @user %>
+        <%= f.hidden_field :user_id  %>
+    <% else  %>
+        <%= f.label :user_id, "Select the User for this task:" %><br>
+        <%= f.collection_select :user_id, User.all, :id, :username %>
+    <% end %>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+
+<% end  %>
+
+</div>
