@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-# before_action :require_login
 before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
     def index
@@ -88,9 +87,5 @@ before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
     def task_params
         params.require(:task).permit(:assignedto, :submittedto, :user_id, :project_id, :status, :submittedon)
-    end
-
-    def require_login
-        return head(:forbidden) unless session.include? :user_id
     end
 end

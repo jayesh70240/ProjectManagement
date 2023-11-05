@@ -1,19 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Project Management</a>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <%= link_to "Project Management",projects_path,class:"navbar-brand"%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="<%= projects_path%>">Home</a>
-      </li>
+    <% if current_user && current_user.role=="manager" %>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_task_path %>">New Task</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= new_project_path %>">New Project</a>
       </li>
+    <% end %>
       <li class="nav-item">
       <% if user_signed_in? %>
         <a class="nav-link" href="<%=user_tasks_path(current_user) %>">My Tasks</a>

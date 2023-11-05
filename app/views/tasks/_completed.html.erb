@@ -4,7 +4,9 @@
     <th>Assigned To</th>      
     <th>Submitted on</th>
     <th>Submitted To</th>
+    <%if current_user && current_user.role == "manager" %>
     <th>Delete</th>
+    <% end %>
     <th>Complete<th>
 </tr>
 
@@ -15,7 +17,9 @@
         <td> <%= task.user.username  %> </td>
         <td> <%= task.submittedon.strftime("%B %d, %Y") unless task.submittedon.nil?%></td>
         <td> <%= task.submittedto  %> </td>
-        <td> <%=  button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }  %> </td>
+        <%if current_user && current_user.role == "manager" %>
+            <td> <%=  button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }  %> </td>
+        <% end %>       
         <td> Completed </td>
     </tr>
     <% end %>
