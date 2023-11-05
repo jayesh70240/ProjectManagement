@@ -9,7 +9,7 @@
 </tr>
 
 <% @tasks.all.each do |task| %>
-<% if !task.completed %>
+<% if task.completed %>
     <tr>
         <td><%= task.project.projectname %></td>
         <td> <%= task.user.username  %> </td>

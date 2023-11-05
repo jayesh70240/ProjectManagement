@@ -32,7 +32,9 @@ before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
     def create
         @task = Task.new(task_params)
-    
+        # Find the user by user_id and set the username as assignedto
+        user = User.find(params[:task][:user_id])
+        @task.assignedto = user.username
         if @task.save
             redirect_to projects_path
         else
@@ -50,6 +52,8 @@ before_action :set_task, only: [:edit, :update, :destroy, :complete]
 
     def update
         if @task.update(task_params)
+            user = User.find(params[:task][:user_id])
+            @task.assignedto = user.username
             redirect_to projects_path
         else
             render :edit

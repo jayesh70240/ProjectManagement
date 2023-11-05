@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'main#index'
+
+  devise_for :users
 
   resources :users, only: [:new, :create] do
     resources :tasks, only: [:index, :show, :new]
