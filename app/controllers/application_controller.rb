@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 before_action :authenticate_user!
 
+    # def authorized
+    #     current_user.id == @task.user_id || (current_user.role == 'manager' || current_user.role == 'admin')
+    # end
+
     def authorized
-        current_user.id == @task.user_id
+      current_user.id == @task.user_id || current_user.role.in?(['manager', 'admin']) && current_user.projects.include?(@task.project)
     end
+    
     helper_method :authorized
 
 

@@ -9,5 +9,9 @@ class Task < ApplicationRecord
   # Validate that 'completed' is either true or false
   validates :completed, inclusion: { in: [true, false] }
 
+  # active admin
+  def self.ransackable_attributes(auth_object = nil)
+    ["assignedto", "completed", "created_at", "id", "project_id", "submittedon", "submittedto", "updated_at", "user_id"]
+  end
   
 end

@@ -21,7 +21,7 @@
 
   <div class="center-block" >
     <%= f.label :submittedto, "Submitted To" %>
-    <%= f.text_field :submittedto, class: "form-control" %>
+    <%= f.collection_select :submittedto, User.where(role: ['manager','admin']),:username, :full_name_with_role, prompt: 'Select a user' %>
   </div>
   <br>
   <div>

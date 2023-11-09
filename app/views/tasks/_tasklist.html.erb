@@ -11,8 +11,8 @@
     </tr>
   </thead>
   <tbody>
-    <% if request.path == user_tasks_path && current_user && current_user.role == "user" %>
-      <% current_user.tasks.all.each do |task| %>
+    <% if current_user && current_user.role == "user" %>
+      <% @tasks.all.each do |task| %>
         <% if !task.completed %>
           <tr scope="row">
             <td><%= task.project.projectname %></td>
@@ -22,7 +22,7 @@
           </tr>
         <% end %>
       <% end %>
-    <% elsif request.path == tasks_path %>
+    <% elsif current_user && current_user.role == "manager" %>
       <% @tasks.each do |task| %>
         <% if !task.completed %>
           <tr scope="row">

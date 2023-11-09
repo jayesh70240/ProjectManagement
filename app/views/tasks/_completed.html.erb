@@ -7,7 +7,8 @@
     <%if current_user && current_user.role == "manager" %>
     <th>Delete</th>
     <% end %>
-    <th>Complete<th>
+    <th>Complete</th>
+    <th>Event Status</th>
 </tr>
 
 <% @tasks.all.each do |task| %>
@@ -20,7 +21,13 @@
         <%if current_user && current_user.role == "manager" %>
             <td> <%=  button_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }  %> </td>
         <% end %>       
-        <td> Completed </td>
+        <td class="text-success"> Completed </td>
+        <% if Date.current <= task.submittedon %>
+        <td style="color: green; font-weight: bold;">ON TIME</td
+        <% else %>
+        <td style="color: red;
+        font-weight: bold;">LATE</td>
+        <% end %>
     </tr>
     <% end %>
 
