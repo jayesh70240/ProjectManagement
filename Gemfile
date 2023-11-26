@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'activeadmin'
 
+gem 'rails-erd'
+
 gem "byebug"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

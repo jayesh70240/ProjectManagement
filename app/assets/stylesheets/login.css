@@ -15,7 +15,7 @@
       justify-content: center;
       align-items: center;*/
       letter-spacing: 1px;
-      background-color: #0c1022;
+      background-color: mintcream;
   }
   .login_form_container{
       position: relative;
@@ -23,7 +23,7 @@
       height: 470px;
       max-width: 400px;
       max-height: 470px;
-      background: #040717;
+      background: mintcream;
       border-radius: 50px 5px;
       display: flex;
       align-items: center;
@@ -161,4 +161,10 @@
       align-items: center;
       color: #0cf;
   }
-  
+  em{
+    font-size: 15px;
+  }
+  .signup{
+    height: 580px;
+    max-height: 650px;
+  }

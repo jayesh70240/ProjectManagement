@@ -1,40 +1,59 @@
-<h2>Sign up</h2>
+<div class="base">
+  <div class="login_form_container signup">
+    <div class="login_form">
+      <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="input_group">
+          <i class="fa fa-envelope"></i>
+          <div class="input_text">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        </div>
+
+        <div class="input_group">
+          <i class="fa fa-user"></i>
+          <div class="input_text">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, autocomplete: "username" %>
+          </div>
+        </div>
+
+        <div class="input_group">
+          <i class="fa fa-unlock-alt"></i>
+          <div class="input_text">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+        </div>
+
+        <div class="input_group">
+          <i class="fa fa-unlock-alt"></i>
+          <div class="input_text">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+        </div>
+
+        <div class="input_group">
+          <%= f.label :role %><br />
+          <%= f.radio_button :role, 'user', checked: true %> User
+          <%= f.radio_button :role, 'manager' %> Manager
+        </div>
+
+        <div class="button_group" id="login_button">
+          <a><%= f.submit "Sign up", class: "link" %></a>
+        </div>
+      <% end %>
+        <div class="fotter">
+         <%= render "devise/shared/links" %>
+        </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autocomplete: "username" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-      <%= f.label :role %><br />
-      <%= f.radio_button :role, 'user', checked: true %> User
-      <%= f.radio_button :role, 'manager' %> Manager
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
